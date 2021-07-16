@@ -1,0 +1,1 @@
+<p><center><a href="mailto:TianTcl@bodin.ac.th?subject=เว็บทะเบียนใหม่">ติดต่อ/สอบถาม/แจ้งปัญหาการใช้งานระบบ</a></center></p>

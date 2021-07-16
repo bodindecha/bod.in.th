@@ -1,0 +1,11 @@
+/* App settings */
+:root {
+	--sys-header-bg-1: #15499A; --sys-header-shadow-1: var(--shd-tiny) #555; --sys-header-shadow-2: var(--shd-big) #2020203F; --sys-header-hov-1: var(--fade-white-8); --sys-header-icon-1: var(--clr-main-white-absolute); --sys-header-text-1: var(--clr-main-white-absolute); --sys-header-text-2: var(--clr-bs-yellow); --sys-header-act-bg-1: var(--fade-white-7); --sys-header-act-txt-1: var(--clr-bs-yellow);
+	--sys-navtab-bg-1: var(--clr-main-white-absolute); --sys-navtab-bd-thick: 0.5px; --sys-navtab-bd: var(--sys-navtab-bd-thick) solid var(--fade-black-8);
+	--sys-main-bg-1: var(--clr-main-white-absolute);
+	--sys-footer-bg-1: var(--clr-bs-light); --sys-footer-head-color: var(--clr-main-black-absolute); --sys-footer-icon-color: var(--clr-bs-indigo); --sys-footer-icon-bs: var(--clr-gg-green-100);
+}
+/* Navigator tabs */
+aside.navigator_tab {
+	font-size: 1em; font-family: 'THSarabunNew', sans-serif;
+}

@@ -1,0 +1,76 @@
+/* Form interactives */
+input, select, textarea {
+	margin: 0px; padding: 0px;
+	border-radius: none; border: none; box-shadow: none;
+}
+input[type="radio"], input[type="checkbox"], input[type="range"], input[type="color"], input[type="image"] {
+	margin: initial; padding: initial;
+	border-radius: initial; border: initial; box-shadow: initial;
+}
+.form input[type="checkbox"] {
+    margin: 2.5px 5px;
+    width: 20px; height: 20px;
+    appearance: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; -o-appearance: none;
+}
+.form input[type="checkbox"]:before {
+    width: 20px; height: 20px;
+    background-color: var(--clr-gg-grey-500); box-shadow: 1.25px 1.25px var(--shd-tiny) var(--fade-black-6);
+    border-radius: 10px;
+    display: inline-block; content: "";
+    cursor: pointer; transition: var(--time-tst-fast);
+}
+.form input[type="checkbox"]:checked:before { background-color: var(--clr-bs-green); }
+.form input.switch[type="checkbox"], .form input.switch[type="checkbox"]:before { width: 40px; }
+.form input.lever[type="checkbox"], .form input.lever[type="checkbox"]:before { height: 40px; }
+.form input[type="checkbox"]:after {
+    width: 16.25px; height: 16.25px;
+    background-color: var(--clr-gg-grey-100);
+    border-radius: 8.125px;
+    display: inline-block; content: "";
+    cursor: pointer; transition: var(--time-tst-fast);
+}
+.form input.emphasize[type="checkbox"]:after {
+    width: 14.25px; height: 14.25px;
+    border: 1px solid var(--clr-gg-grey-300);
+}
+.form input.switch[type="checkbox"]:after { transform: translate(calc(-100% - 21.25px), -2px); }
+.form input.switch[type="checkbox"]:checked:after { transform: translate(calc(-100% - 2.75px), -2px); }
+.form input.emphasize.switch[type="checkbox"]:after { transform: translate(calc(-100% - 22.25px), -1.25px) scale(1.5); }
+.form input.emphasize.switch[type="checkbox"]:checked:after { transform: translate(calc(-100% - 1.75px), -1.25px) scale(1.5); }
+.form input.lever[type="checkbox"]:after { transform: translate(calc(-100% - 1.75px), -2.25px); }
+.form input.lever[type="checkbox"]:checked:after { transform: translate(calc(-100% - 1.75px), -21.75px); }
+.form input.emphasize.lever[type="checkbox"]:after { transform: translate(calc(-100% - 1.75px), -1.25px) scale(1.5); }
+.form input.emphasize.lever[type="checkbox"]:checked:after { transform: translate(calc(-100% - 1.75px), -21.75px) scale(1.5); }
+.form select {
+	font-family: "Balsamiq Sans", "Sarabun", sans-serif; font-size: 1.025em;
+	border-radius: 2.5px; border: 1px solid var(--clr-main-black-absolute);
+    background-color: var(--sys-main-bg-1);
+    transition: var(--time-tst-fast);
+}
+.form select:focus { border-radius: 2.5px 2.5px 0px 0px; }
+/* ADDITIONAL */
+/* share dialog */
+div.sharer table { width: 100%; }
+div.sharer table tr td {
+    --abtn-height: 25px;
+    padding: 5px;
+}
+div.sharer table tr td a {
+    text-align: left;
+    display: flex;
+}
+div.sharer table tr td a img, div.sharer table tr td a i {
+    width: var(--abtn-height); height: var(--abtn-height);
+    font-size: 24px; line-height: var(--abtn-height); text-decoration: none;
+    color: var(--clr-main-white-absolute); text-align: center;
+    object-fit: contain;
+}
+div.sharer table tr td a span {
+    margin-left: 7.5px;
+    font-size: 15px; line-height: var(--abtn-height); font-weight: bold;
+}
+div.sharer center { margin: 10px 0px; }
+div.sharer center button {
+    padding: 2.5px 20px;
+    font-size: 15px; font-weight: bold;
+}

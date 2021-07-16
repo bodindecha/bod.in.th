@@ -1,0 +1,22 @@
+{
+  "name": "Bodin Info-System",
+  "description" : "Bodindecha (Sing Singhaseni) School's Information System",
+  "version": "1.0",
+  "manifest_version": 2,
+  "app": {
+	"urls": ["https://inf.bodin.ac.th"]  
+  },
+  "browser_action": {
+    "--default_popup": "/resource/appwork/extn-popup",
+    "default_icon": "/resource/images/logo.png"
+  },
+  "--commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+Shift+B",
+        "mac": "MacCtrl+Alt+Shift+B"
+      },
+      "description": "Open BODIN-INF shortcuts"
+    }
+  }
+}
