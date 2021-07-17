@@ -31,11 +31,11 @@
 			html body main div.container div {
 				--c: var(--clr-gg-grey-500);
 				color: var(--c);
-				display: flex;
+				display: flex; justify-content: center;
 			}
 			html body main div.container div span {
 				margin: auto 0px;
-				width: 50%; height: 1px;
+				width: /* 50% */ 250px; height: 1px;
 				background-color: var(--c);
 				display: block;
 			}
