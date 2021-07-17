@@ -29,7 +29,9 @@ RewriteRule ^.* - [F,L]
 # ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ Specific / custom url edit ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~
 
 ## Url edits
-RewriteRule ^(?!(error|dashboard|go))[A-Za-z0-9_\-]{3,150}$ /resource/appwork/redirect?key=$1 [L]
+RewriteRule ^((?!(dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})$ /resource/appwork/redirect?key=$1 [L,QSA]
+RewriteRule ^((?!(dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})/edit$ /resource/appwork/edit?key=$1 [L]
+RewriteRule ^((?!(dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})\+$ /resource/appwork/analystic?key=$1 [L]
 
 ## Redirect some link
 Redirect 301 /index /
