@@ -37,6 +37,5 @@
             $db -> close();
         } else $error = 902;
     } else $error = 902;
-    echo "SELECT urlid,rdrto FROM urls WHERE type='$type' AND keyword='$key' AND active='Y'";
     if (isset($error)) echo file_get_contents("https://l.bodin.ac.th/error/".strval($error));
 ?>
