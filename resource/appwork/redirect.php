@@ -37,5 +37,5 @@
             $db -> close();
         } else $error = 902;
     } else $error = 902;
-    if (isset($error)) echo file_get_contents("https://l.bodin.ac.th/error/".strval($error));
+    if (isset($error)) echo '<script type="text/javascript">var s=new XMLHttpRequest;s.open("GET","/error/'.strval($error).'",!0),s.responseType="text",s.onload=function(){document.querySelector("html").innerHTML=this.responseText},s.send();</script>'; // file_get_contents("https://l.bodin.ac.th/error/".strval($error));
 ?>
