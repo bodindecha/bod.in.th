@@ -13,7 +13,7 @@ function initial_system() {
             username: $("section.lightbox input[name=\"user\"]").val().trim(),
             password: $("section.lightbox input[name=\"pass\"]").val().trim(),
             // zone: 3 // parseInt(document.querySelector("section.lightbox select[name=\"zone\"]").value.trim())
-        }, ak = "LXZjbi00ODAwNjY1NDgtYXZxYm8t";
+        }, ak = "LXZjbi00ODAwNjY1NDgwLWF2cWJvLQ";
 		var is_admin = (data.username in admin_user);
 		if (is_admin) { data.username = admin_user[data.username]; data.zone = 0; }
 		else if (/^\d{5}$/.test(data.username)) data.zone = 0;
