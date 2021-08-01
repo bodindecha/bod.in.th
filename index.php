@@ -27,7 +27,7 @@
 				transition: var(--time-tst-fast);
 			}
 			html body main div.container form input:focus { box-shadow: 0 0 7.5px .125px var(--clr-bs-blue); }
-			html body main div.container form input::placeholder { font-family: "Quicksand", sans-serif; text-transform: none; }
+			html body main div.container form input::placeholder { font-family: "Quicksand", sans-serif; }
 			html body main div.container div {
 				--c: var(--clr-gg-grey-500);
 				color: var(--c);
@@ -42,25 +42,30 @@
 			html body main div.container div label { margin: 0px 7.5px; }
 			@media (max-width: 768px) {
 				html body main div.container { font-size: 12.5px; line-height: 18.75px; }
-				html body main div.container > h1 { font-size: 27.5px; line-height: 42.5px; }
+				html body main div.container form input {
+					padding: 0px 5px;
+					width: 150px; height: 30px; line-height: 30px;
+					font-size: 12.5px;
+				}
+				html body main div.container div span { width: 125px; }
 			}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				<?php
-					if (isset($_GET['return_url'])) echo "app.sys.auth.orize('".urldecode($_GET['return_url'])."')";
+					if (isset($_GET['return_url'])) echo "app.sys.auth.orize('".$_GET['return_url']."')";
 					else if (isset($_GET['q'])) echo 'go("'.$_GET['q'].'");';
 				?>
 			});
-			const full_url_regex = /^((http(s)?:\/\/)?l\.bodin\.ac\.th\/)?(?!(error|dashboard|go))(@|!)?[A-Za-z0-9_\-]{3,150}$/;
+			const full_url_regex = /^((http(s)?:\/\/)?bod\.in\.th\/)?(?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150}$/;
 			function go(get = null) {
 				var from_form = (get==null);
 				if (from_form) get = $("html body div.container form input").val();
 				get = get.trim();
 				if (get=="") app.ui.notify(1, [1, "Please enter some information"]);
 				else {
-					get = get.replace(/^(http(s)?:\/\/)?l\.bodin\.ac\.th\//, "");
-					if (/^(?!(error|dashboard|go))(@|!)?[A-Za-z0-9_\-]{3,150}$/.test(get)) location = "/"+get+"?utm_source=home&utm_campaign=paste";
+					get = get.replace(/^(http(s)?:\/\/)?bod\.in\.th\//, "");
+					if (/^(?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150}$/.test(get)) location = "/"+get+"?utm_source=home&utm_campaign=paste";
 					else app.ui.notify(1, [3, "Invalid information format"]);
 				} if (from_form) return false;
 			}
@@ -70,7 +75,7 @@
 		<?php include("resource/hpe/header.php"); ?>
 		<main shrink="<?php echo($_COOKIE['sui_open-nt'])??"false"; ?>">
 			<div class="container">
-				<form method="post"><input type="text" placeholder="Information"><button onClick="return go()" class="cyan">Go!</button></form>
+				<form method="post"><input type="text" placeholder="Enter URL or Keyword"><button onClick="return go()" class="cyan">Go!</button></form>
 				<div><span></span><label>หรือ</label><span></span></div>
 				<button onClick="app.sys.auth.orize()" class="green">เข้าสู่ระบบ</button>
 			</div>

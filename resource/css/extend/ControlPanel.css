@@ -1,0 +1,166 @@
+html body main div.container {
+    padding: 30px 10px 20px;
+    position: relative; left: 50%; transform: translateX(-50%);
+    max-width: calc(95% - 20px);
+    font-size: 18.75px; font-family: "Sarabun", serif;
+    overflow-x: hidden;
+}
+@media (min-width: 768px) { main div.container { width: 750px; } }
+@media (min-width: 992px) { main div.container { width: 970px; } }
+@media (min-width: 1200px) { main div.container { width: 1170px; } }
+html body main div.container > * { margin: 0px 0px 10px; }
+html body main div.container form.jumpto {
+    line-height: 45px;
+    display: flex; justify-content: center;
+}
+html body main div.container form.jumpto > *:not(:first-child) { margin-left: 7.5px; }
+html body main div.container form.jumpto input {
+    padding: 0px 7.5px;
+    width: 275px; max-width: calc(100% - 150px); height: 45px; line-height: 45px;
+    font-size: 17.5px; font-family: "Open sans", serif;
+    border-radius: 3px; border: 1px solid var(--clr-bs-gray-dark);
+    transition: var(--time-tst-fast);
+}
+html body main div.container form.jumpto input:focus { box-shadow: 0 0 7.5px .125px var(--clr-bs-blue); }
+html body main div.container form.jumpto input::placeholder { font-family: "Quicksand", sans-serif; }
+html body main div.container div.account {
+    margin-top: 25px; padding-top: 25px;
+    border-top: 1px solid var(--clr-gg-grey-500);
+    display: flex; justify-content: space-between;
+    transition: var(--time-tst-fast);
+}
+html body main div.container form.create {
+    margin-top: 30px; padding: 7.5px;
+    box-shadow: 0px 0px var(--shd-big) var(--clr-gg-grey-300);
+    transition: var(--time-tst-fast);
+}
+html body main div.container form.create h2 { margin: 0px 0px 5px; }
+html body main div.container form.create div {
+    margin: 12.5px 0px;
+    white-space: nowrap;
+    display: flex;
+}
+html body main div.container form.create div span { font-family: 'Kanit', sans-serif; }
+html body main div.container form.create div input { font-size: 15px; }
+form.create input[name="url"] {
+    margin-left: 5px; padding: 0px 2.5px;
+    width: 100%;
+    border: 1px solid var(--clr-pp-blue-800); border-radius: 2.5px;
+    background-color: var(--clr-bs-white);
+}
+form.create input[name="url"]:focus { background-color: var(--clr-bs-light); }
+html body main div.container form.create div font { font-family: 'Dosis', sans-serif; color: var(--clr-bs-gray); }
+html body main div.container form.create div > font { width: 100%; }
+form.create input[name="csu"] {
+    padding: 2.5px;
+    width: calc(100% - 5px);
+    font-family: 'Dosis', sans-serif; font-size: 18.75px;
+    border: 0px; border-bottom: 1px solid #777; border-radius: 3.125px 3.125px 0px 0px;
+    color: var(--clr-bs-gray); transition: background-color var(--time-tst-xfast), border-bottom var(--time-tst-fast);
+}
+form.create input[name="csu"]:focus { background-color: var(--fade-black-8); }
+html body main div.container form.create div a[role="button"] {
+    padding: 2.5px;
+    width: 25px; height: 25px;
+    display: inline-block;
+}
+html body main div.container div.lists {
+    --bd : 1px solid var(--clr-main-black-absolute);
+    margin-top: 30px;
+    border-radius: 12.5px; border: var(--bd);
+    overflow: hidden;
+}
+html body main div.container div.lists > input:checked ~ div.viewport div.action, html body main div.container div.lists > input:checked ~ div.viewport div.viewer { border-top: var(--bd); }
+html body main div.container div.lists > input:checked ~ div.accordian label i.marker { transform: scale(1.25, -1.25); }
+html body main div.container div.lists > input:checked ~ div.viewport { height: calc(var(--h) + var(--e)); }
+html body main div.container div.lists > input:checked ~ div.viewport div.filter i { display: inline-block; }
+html body main div.container div.lists div.viewport div.action { transition: var(--time-tst-xfast); }
+html body main div.container div.lists div.accordian label {
+    padding: 7.5px 10px;
+    font-family: "Open Sans", serif;
+    display: flex; justify-content: space-between; cursor: pointer;
+}
+html body main div.container div.lists div.accordian label span { font-size: 18.75px; line-height: 25px; }
+html body main div.container div.lists div.accordian label i.marker {
+    position: relative; transform: scale(1.25, 1.25);
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    line-height: 25px; text-align: center; /* list-style-type: disclosure-open;
+    display: list-item; */ display: block; transition: var(--time-tst-xfast);
+}
+html body main div.container div.lists div.accordian label i.marker:hover { background-color: var(--fade-black-8); }
+html body main div.container div.lists div.viewport {
+    height: 0px;
+    transition: var(--time-tst-fast) ease-in-out;
+}
+/* Viewer */
+html body main div.container div.lists div.viewport div.action {
+    padding: 5px;
+    display: flex;
+}
+html body main div.container div.lists div.viewport div.action div:not(.filter) {
+    margin: 0px 2.5px; padding: 2.5px 5px;
+    height: 23px;
+    font-size: 12.5px; line-height: 23px;
+    border-radius: 2.5px; border: 1px solid var(--clr-pp-blue-a700);
+    background-color: var(--clr-bs-blue); color: var(--clr-bs-white);
+    cursor: pointer;
+}
+html body main div.container div.lists div.viewport div.action div:not(.filter):hover { box-shadow: 0px 1.25px var(--shd-tiny) var(--clr-gg-blue-300); }
+html body main div.container div.lists div.viewport div.action div:not(.filter)[disabled] { color: var(--clr-gg-grey-300); }
+html body main div.container div.filter {
+    width: 100%; height: 100%;
+    border-radius: 20px; box-shadow: 0px 2.5px 2.5px 2.5px rgb(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+html body main div.container div.filter *:not(i) { font-size: 15px; line-height: 20px; font-family: "THKodchasal", serif; }
+html body main div.container div.filter input {
+    padding: 10px 55px 10px 15px;
+    width: 100%;
+}
+html body main div.container div.filter input::-webkit-search-cancel-button {
+    transform: scale(2.5) translateY(-1.25px);
+    cursor: pointer;
+}
+html body main div.container div.filter i {
+    position: absolute; right: 22.5px;
+    width: 40px; height: 40px;
+    font-size: 36px; line-height: 40px;
+    color: var(--clr-gg-grey-500); text-align: center;
+    display: none; transition: var(--time-tst-ffast) var(--time-tst-xfast); pointer-events: none;
+}
+html body main div.container div.lists div.viewport div.viewer div.table { border: none; }
+div.table table tbody tr td a {
+    height: 0px; line-height: 24px;
+    visibility: hidden;
+    overflow: hidden;
+}
+div.table table tbody tr:hover td a { visibility: inherit; }
+div.table table tbody tr td a i.material-icons {
+    transform: translateY(1.25px);
+    font-size: 18px;
+}
+div.table table thead tr th[onClick]:hover { background-image: linear-gradient(to bottom, var(--fade-black-7), var(--fade-black-8)); }
+div.table table thead tr th[onClick]:active { background-image: linear-gradient(to top, var(--fade-black-7), var(--fade-black-8)); }
+@media (max-width: 768px) {
+    html body main div.container { font-size: 12.5px; line-height: 18.75px; }
+    html body main div.container form.jumpto { font-size: 12.5px; line-height: 30px; }
+    html body main div.container form.jumpto input {
+        padding: 0px 5px;
+        width: 150px; height: 30px; line-height: 30px;
+        font-size: 12.5px;
+    }
+    html body main div.container div.account { margin-top: 17.5px; padding-top: 17.5px; }
+    html body main div.container form.create { margin-top: 20px; }
+    html body main div.container form.create div { margin: 10px 0px; }
+    form.create input[name="csu"] { padding: 0px 2.5px; font-size: 12.5px; }
+    html body main div.container form.create div a[role="button"] {
+        padding: 0px 2.5px;
+        width: 17.5px; height: 17.5px;
+        display: inline-block;
+    }
+    html body main div.container form.create div a[role="button"] i.material-icons {
+        transform: translateY(2.5px);
+        font-size: 12px;
+    }
+}

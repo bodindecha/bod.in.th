@@ -16,7 +16,7 @@ function preventDefaultForScrollKeys(e) {
 // modern Chrome requires { passive: false } when adding event
 var supportsPassive = false;
 try {
-  document.body.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
     get: function () { supportsPassive = true; } 
   }));
 } catch(e) {}
@@ -26,16 +26,16 @@ var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewh
 
 // call this to Disable
 function disableScroll() {
-  document.body.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  document.body.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  document.body.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-  document.body.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
 // call this to Enable
 function enableScroll() {
-  document.body.removeEventListener('DOMMouseScroll', preventDefault, false);
-  document.body.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
-  document.body.removeEventListener('touchmove', preventDefault, wheelOpt);
-  document.body.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }

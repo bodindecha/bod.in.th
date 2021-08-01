@@ -1,7 +1,8 @@
 <?php
+	header("Location: /error/903");
 	include("../hpe/init_ps.php");
 	$header_title = "Edit URL";
-	$header_desc = "แก้ไขข้อมูลของลิ้งก์ย่อ";
+	$header_desc = "แก้ไขข้อมูลของลิงก์ย่อ";
 ?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">

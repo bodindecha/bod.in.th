@@ -10,10 +10,11 @@
 		<?php
 			if (isset($_SESSION['auth'])) echo '
 				<div class="head-item logo contain-img text">
-					<a href="/dashboard"><img src="/resource/images/logo.png" data-dark="false"><span>หน้าแรก</span><!--span>DPST⨯SMTE</span--></a>
+					<a href="/'.($_SESSION['auth']['is_admin']?"admin":"dashboard").'"><img src="/resource/images/logo.png" data-dark="false"><span>หน้าแรก</span><!--span>DPST⨯SMTE</span--></a>
 				</div>
 				<div class="head-item text">
 					<a href="/dashboard"><span>แผงควบคุม</span></a>
+					'.($_SESSION['auth']['is_admin']?'<a href="/admin"><span>แผงควบคุมชุบแป้งทอด???</span></a>':"").'
 					<a onClick="app.sys.auth.out()" href="javascript:void(0)"><span>ออกจากระบบ</span></a>
 				</div>
 			'; else echo '

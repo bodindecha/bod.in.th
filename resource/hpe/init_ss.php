@@ -25,6 +25,7 @@
 <script type="text/javascript">
     // Resizing
     $(function(){
+		<?php if($require_sso)echo"app.sys.auth.sso('".($_GET['return_url']??"")."');"; ?>
 		var main_height = $("html body main").height();
 		$("html body header section div.head-item.menu a").on("click", function(){setTimeout(function(){$(window).trigger("resize");},500);});
 		var $window = $(window).on('resize', function(){
