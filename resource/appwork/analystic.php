@@ -5,16 +5,16 @@
 
 	include("db_connect.php");
 	if (isset($_GET['key'])) {
-        // Tune
-        if (preg_match("/^[A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = $_GET['key']; $type = "T"; }
-        else if (preg_match("/^@[A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = ltrim($_GET['key'], "@"); $type = "M"; }
-        else if (preg_match("/^![A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = ltrim($_GET['key'], "!"); $type = "S"; }
-        // Find
-        if (isset($type)) {
-            require_once("config.php");
-			$read_url = $db -> query("SELECT urlid,rdrto,click,owner,active FROM urls WHERE type='$type' AND keyword='".base64_encode($key)."'");
-            if ($read_url -> num_rows == 1) {
-                $get_url = $read_url -> fetch_array(MYSQLI_ASSOC);
+		// Tune
+		if (preg_match("/^[A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = $_GET['key']; $type = "T"; }
+		else if (preg_match("/^@[A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = ltrim($_GET['key'], "@"); $type = "M"; }
+		else if (preg_match("/^![A-Za-z0-9_\-]{3,150}$/", $_GET['key'])) { $key = ltrim($_GET['key'], "!"); $type = "S"; }
+		// Find
+		if (isset($type)) {
+			require_once("config.php");
+			$read_url = $db -> query("SELECT urlid,rdrto,click,owner,active FROM urls WHERE type='$type' AND keyword='$key'");
+			if ($read_url -> num_rows == 1) {
+				$get_url = $read_url -> fetch_array(MYSQLI_ASSOC);
 				if ($get_url['owner']==$_SESSION['auth']['user'] || $_SESSION['auth']['is_admin']) {
 					/* $read_stat = $db -> query("SELECT utm_source,utm_campaign,ccode,time,useragent FROM log_click WHERE urlid='".$get_url['urlid']."'");
 					$has_stat = $read_stat -> num_rows > 0; */
@@ -164,7 +164,12 @@
 				google.charts.load("current", { packages: ["geochart"], mapsApiKey: "AIzaSyAKMCcQbqlEHV6yhmIYLTrROAFrrE5HCLA" });
 				google.charts.setOnLoadCallback(function() {
 					$(window).on("resize", resize).trigger("resize");
-				}); ShowTime(1); // ShowUtm(0);
+				}); ShowTime(1); // ShowUtm(0); */
+
+				/* google.load("visualization", "1.0", { packages: ["geochart"] });
+				google.setOnLoadCallback(function() {
+					$(window).on("resize", resize).trigger("resize");
+				}); ShowTime(1); // ShowUtm(0); */
 			});
 			function resize() {
 				let ec = $('html body main div.container div.vb div.viewport [name="VisitDaily"]');
@@ -315,7 +320,8 @@
 							let gData = google.visualization.arrayToDataTable(dataset[key]);
 							chart.draw(gData, { /*
 								displayMode: "text",
-								colorAxis: {colors: ["#28A745", "#007BFF"]} */
+								colorAxis: {colors: ["#28A745", "#007BFF"] }, */
+								backgroundColor: "#FFFF", theme: "maximized"
 							});
 						}
 					}
@@ -324,6 +330,7 @@
 		</script>
 		<script type="text/javascript" src="/resource/js/lib/chart.min.js"></script>
 		<script type="text/javascript" src="/resource/js/lib/charts.min.js"></script>
+		<script type="text/javascript" src="/resource/js/lib/ggMaps.min.js"></script>
 	</head>
 	<body>
 		<?php include("../hpe/header.php"); ?>
@@ -342,9 +349,9 @@
 								<div class="viewport time">
 									<span class="wrapup">
 										<div class="tab">
-											<div onClick="ShowTime(0)">รายชั่วโมง</div>
-											<div onClick="ShowTime(1)">รายวัน</div>
-											<div onClick="ShowTime(2)">รายเดือน</div>
+											<div onClick="ShowTime(0)" class="ripple-click">รายชั่วโมง</div>
+											<div onClick="ShowTime(1)" class="ripple-click">รายวัน</div>
+											<div onClick="ShowTime(2)" class="ripple-click">รายเดือน</div>
 										</div><span class="bar-responsive" style="--o: 3"></span>
 										<div class="tbs">
 											<div order="0">

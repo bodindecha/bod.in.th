@@ -20,7 +20,7 @@
 				include("db_connect.php");
 				$ss_randstr = ""; for ($ss_i = 0; $ss_i < 8; $ss_i++) $ss_randstr .= substr("abcdfghjklmnpqrstvwxyzABCDFGHJKLMNPQRSTVWXYZ0123456789_-", rand(0,54), 1);
 				if (preg_match("/([a-zA-Z]+)/", $ss_randstr) && preg_match("/([0-9]+)/", $ss_randstr)) {
-					$r_query = $db -> query("SELECT urlid FROM urls WHERE type='$typo' AND keyword='".base64_encode($ss_randstr)."'");
+					$r_query = $db -> query("SELECT urlid FROM urls WHERE type='$typo' AND keyword='$ss_randstr'");
 					if ($r_query->num_rows == 1) $ss_randstr = gen_rand($typo);
 				} else $ss_randstr = gen_rand($typo);
 				$db -> close();
@@ -31,17 +31,17 @@
 			// Check URL duplicates
 			if (!isset($i_dup)) {
 				$u_query = $db -> query("SELECT type,keyword FROM urls WHERE rdrto='$attr'");
-				if ($u_query->num_rows == 1) { $u_each = $u_query -> fetch_array(MYSQLI_ASSOC); $i_dup = array(1, $u_each['type'], base64_decode($u_each['keyword'])); }
+				if ($u_query->num_rows == 1) { $u_each = $u_query -> fetch_array(MYSQLI_ASSOC); $i_dup = array(1, $u_each['type'], $u_each['keyword']); }
 			}
 			// Check CSU duplicates
 			if (!isset($i_dup)) {
-				$c_query = $db -> query("SELECT rdrto FROM urls WHERE type='$typo' AND keyword='".base64_encode($dat)."'");
+				$c_query = $db -> query("SELECT rdrto FROM urls WHERE type='$typo' AND keyword='$dat'");
 				if ($c_query->num_rows == 1) { $c_each = $c_query -> fetch_array(MYSQLI_ASSOC); $i_dup = array(2, $c_each['rdrto']); }
 			}
 			// Shorten
 			if (!isset($i_dup)) {
 				// Insert new URL
-				$db -> query("INSERT INTO urls (type,keyword,rdrto,owner) VALUES ('$typo','".base64_encode($dat)."','$attr','".$_SESSION['auth']['user']."')");
+				$db -> query("INSERT INTO urls (type,keyword,rdrto,owner) VALUES ('$typo','$dat','$attr','".$_SESSION['auth']['user']."')");
 				// Record creation log
 				require_once("getip.php");
 				$db -> query("INSERT INTO log_action (user,act,feild,old,new,ipaddr) VALUES ('".$_SESSION['auth']['user']."','C','','$attr','$dat','$ip')");
@@ -61,7 +61,7 @@
 			$type = str_split($dat)[0]; $type = ($type == "@" ? "M" : ($type == "!" ? "S" : "T"));
 			if ($attr == "Y" || $attr == "N") {
 				$dat = preg_replace('/^(!|@)/', "", $db -> real_escape_string($dat));
-				$success = $db -> query("UPDATE urls SET active='$attr' WHERE type='$type' AND keyword='".base64_encode($dat)."'");
+				$success = $db -> query("UPDATE urls SET active='$attr' WHERE type='$type' AND keyword='$dat'");
 				if ($success) {
 					require_once("getip.php");
 					$db -> query("INSERT INTO log_action (user,act,feild,old,new,ipaddr) VALUES ('".$_SESSION['auth']['user']."','E','S','$dat','$attr','$ip')");
