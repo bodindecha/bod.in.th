@@ -28,14 +28,20 @@ RewriteRule ^.* - [F,L]
 
 # ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ Specific / custom url edit ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~ ~~~~~~~~~~
 
+## Redirect CONTROLS to INF.BODIN
+RewriteRule ^(|dashboard|admin)$ https://inf.bodin.ac.th/service/app/url-short/$1 [L,QSA]
+RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150}(~|\+))$ https://inf.bodin.ac.th/service/app/url-short/$1 [L]
+
 ## Url edits
-RewriteRule ^((?!(error|dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})$ /resource/appwork/redirect?key=$1 [L,QSA]
-RewriteRule ^((?!(error|dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})\$$ /resource/appwork/edit?key=$1 [L]
-RewriteRule ^((?!(error|dashboard))(@|!)?[A-Za-z0-9_\-]{3,150})\+$ /resource/appwork/analystic?key=$1 [L]
+RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150})$ /resource/appwork/redirect?key=$1 [L,QSA]
+# RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150})~$ /resource/appwork/edit?key=$1 [L]
+RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150})~$ https://inf.bodin.ac.th/service/app/url-short/$1~ [L]
+# RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150})\+$ /resource/appwork/analystic?key=$1 [L]
+RewriteRule ^((?!(error|dashboard|admin))(@|!)?[A-Za-z0-9_\-]{3,150})\+$ https://inf.bodin.ac.th/service/app/url-short/$1+ [L]
 
 ## Redirect some link
 Redirect 301 /index /
-RewriteRule ^error/([1-59]{1}[0-59]{1}\d{1})$ /error?hsc=$1 [L]
+RewriteRule ^error/(\d{3,4})$ /error?hsc=$1 [L]
 RewriteCond %{HTTP_USER_AGENT} (Safari){0} [NC]
 RewriteRule ^(.+\.(png|jpg|jpeg|gif))$ resource/images/viewer?path=$1 [L,QSA]
 RewriteCond %{HTTP_USER_AGENT} (Safari){0} [NC]
